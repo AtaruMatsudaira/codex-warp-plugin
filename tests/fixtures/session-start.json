@@ -1,0 +1,9 @@
+{
+  "session_id": "thread-123",
+  "cwd": "/tmp/project",
+  "transcript_path": null,
+  "model": "gpt-5.4",
+  "permission_mode": "on-request",
+  "source": "startup"
+}
+

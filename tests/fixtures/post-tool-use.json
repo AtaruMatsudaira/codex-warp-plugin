@@ -1,0 +1,18 @@
+{
+  "session_id": "thread-123",
+  "turn_id": "turn-1",
+  "cwd": "/tmp/project",
+  "hook_event_name": "PostToolUse",
+  "model": "gpt-5.4",
+  "permission_mode": "on-request",
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git status --short"
+  },
+  "tool_response": {
+    "exit_code": 0,
+    "output": "M README.md"
+  },
+  "tool_use_id": "call-1"
+}
+

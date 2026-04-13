@@ -1,0 +1,10 @@
+{
+  "session_id": "thread-123",
+  "turn_id": "turn-1",
+  "cwd": "/tmp/project",
+  "hook_event_name": "UserPromptSubmit",
+  "model": "gpt-5.4",
+  "permission_mode": "on-request",
+  "prompt": "Implement Warp notifications for Codex"
+}
+

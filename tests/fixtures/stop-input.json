@@ -1,0 +1,11 @@
+{
+  "session_id": "thread-123",
+  "turn_id": "turn-1",
+  "cwd": "/tmp/project",
+  "hook_event_name": "Stop",
+  "model": "gpt-5.4",
+  "permission_mode": "on-request",
+  "stop_hook_active": false,
+  "last_assistant_message": "Implemented Warp notifications and installer."
+}
+
