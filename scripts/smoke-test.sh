@@ -10,6 +10,7 @@ PLUGIN_SCRIPT_ROOT="$REPO_ROOT/plugins/warp-codex/scripts"
 export TERM_PROGRAM="WarpTerminal"
 export WARP_CLI_AGENT_PROTOCOL_VERSION="1"
 export WARP_NOTIFY_SINK="stdout"
+export WARP_CODEX_NOTIFY_EVENTS="all"
 
 assert_payload() {
     local output="$1"

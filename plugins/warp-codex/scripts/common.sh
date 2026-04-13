@@ -13,6 +13,31 @@ debug_hook_invocation() {
     debug_log "hook=${hook_name} pid=$$ ppid=$PPID term_program=${TERM_PROGRAM:-} warp_proto=${WARP_CLI_AGENT_PROTOCOL_VERSION:-} pwd=$(pwd)"
 }
 
+notification_event_enabled() {
+    local event_name="${1:-}"
+    local raw_config="${WARP_CODEX_NOTIFY_EVENTS:-stop}"
+    local normalized
+
+    normalized="$(printf '%s' "$raw_config" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')"
+
+    if [ -z "$normalized" ] || [ "$normalized" = "none" ]; then
+        return 1
+    fi
+
+    if [ "$normalized" = "all" ]; then
+        return 0
+    fi
+
+    case ",$normalized," in
+        *,"$event_name",*)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
 truncate_text() {
     local value="${1:-}"
     local limit="${2:-200}"

@@ -8,6 +8,10 @@ source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "stop"
 should_use_plain || exit 0
+notification_event_enabled "stop" || {
+    debug_log "hook=stop skipped_by_policy"
+    exit 0
+}
 
 INPUT="$(cat)"
 

@@ -8,6 +8,10 @@ source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "post_tool_use"
 should_use_plain || exit 0
+notification_event_enabled "post_tool_use" || {
+    debug_log "hook=post_tool_use skipped_by_policy"
+    exit 0
+}
 
 INPUT="$(cat)"
 TOOL_NAME="$(printf '%s' "$INPUT" | jq -r '.tool_name // "Bash"' 2>/dev/null)"

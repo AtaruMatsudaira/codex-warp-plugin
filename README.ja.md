@@ -56,6 +56,31 @@ bash scripts/smoke-test.sh
 
 fixture 入力で hook スクリプトの payload 生成を確認できます。
 
+## 通知ポリシー
+
+デフォルトでは、デスクトップ通知は次だけ送ります。
+
+- `stop`
+
+これは、Codex がターンを完了して注意が必要になる場面に通知を絞るためです。
+
+必要なら `WARP_CODEX_NOTIFY_EVENTS` で上書きできます。
+
+例:
+
+```bash
+export WARP_CODEX_NOTIFY_EVENTS=all
+export WARP_CODEX_NOTIFY_EVENTS=stop,post_tool_use
+export WARP_CODEX_NOTIFY_EVENTS=none
+```
+
+指定できる event 名:
+
+- `session_start`
+- `user_prompt_submit`
+- `post_tool_use`
+- `stop`
+
 ## デバッグ
 
 hook のデバッグログは以下に出ます。

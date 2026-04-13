@@ -60,6 +60,31 @@ bash scripts/smoke-test.sh
 
 This validates the hook scripts against fixture inputs without depending on a live Warp session.
 
+## Notification Policy
+
+By default, desktop notifications are sent only for:
+
+- `stop`
+
+This keeps the signal focused on moments when Codex has finished a turn and may need your attention.
+
+You can override the default with `WARP_CODEX_NOTIFY_EVENTS`.
+
+Examples:
+
+```bash
+export WARP_CODEX_NOTIFY_EVENTS=all
+export WARP_CODEX_NOTIFY_EVENTS=stop,post_tool_use
+export WARP_CODEX_NOTIFY_EVENTS=none
+```
+
+Supported event names:
+
+- `session_start`
+- `user_prompt_submit`
+- `post_tool_use`
+- `stop`
+
 ## Debugging
 
 Runtime hook debug logs are written to:
