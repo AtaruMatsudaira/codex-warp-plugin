@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+*.tmp
+*.swp
+*.swo
+
+.tmp/
+tmp/
+dist/
+coverage/
+node_modules/
+

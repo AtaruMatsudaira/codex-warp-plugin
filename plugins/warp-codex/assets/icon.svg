@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Warp Codex icon">
+  <rect width="128" height="128" rx="24" fill="#111827"/>
+  <path d="M24 35h80v58H24z" fill="#0f172a" stroke="#38bdf8" stroke-width="6"/>
+  <path d="M40 53l16 11-16 11" fill="none" stroke="#38bdf8" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+  <path d="M66 78h22" fill="none" stroke="#f8fafc" stroke-linecap="round" stroke-width="8"/>
+  <circle cx="96" cy="32" r="12" fill="#22c55e"/>
+</svg>
+

@@ -1,0 +1,42 @@
+{
+  "name": "warp-codex",
+  "version": "0.1.0",
+  "description": "Warp terminal integration for Codex CLI with native Warp notifications on macOS.",
+  "author": {
+    "name": "OpenAI Codex Local Integration",
+    "url": "https://warp.dev"
+  },
+  "homepage": "https://warp.dev",
+  "repository": "https://github.com/warpdotdev/claude-code-warp",
+  "license": "MIT",
+  "keywords": [
+    "warp",
+    "codex",
+    "notifications",
+    "terminal"
+  ],
+  "hooks": "./hooks.json",
+  "interface": {
+    "displayName": "Warp for Codex",
+    "shortDescription": "Native Warp notifications for Codex CLI sessions",
+    "longDescription": "Adds Warp-native session notifications for Codex CLI via official Codex hooks and Warp OSC 777 notifications.",
+    "developerName": "Local",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://warp.dev",
+    "privacyPolicyURL": "https://www.warp.dev/privacy-policy",
+    "termsOfServiceURL": "https://www.warp.dev/terms",
+    "defaultPrompt": [
+      "Install Warp notifications for my local Codex CLI",
+      "Show Codex task completion in Warp",
+      "Enable Warp session status for Codex"
+    ],
+    "brandColor": "#01A4FF",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg",
+    "screenshots": []
+  }
+}
+

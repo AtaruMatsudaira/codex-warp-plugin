@@ -1,0 +1,21 @@
+{
+  "name": "local-dev",
+  "interface": {
+    "displayName": "Local Dev Plugins"
+  },
+  "plugins": [
+    {
+      "name": "warp-codex",
+      "source": {
+        "source": "local",
+        "path": "./plugins/warp-codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
+
