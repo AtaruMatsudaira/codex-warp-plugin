@@ -7,6 +7,7 @@ source "$SCRIPT_DIR/should-notify.sh"
 source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
+debug_hook_invocation "stop"
 should_use_plain || exit 0
 
 INPUT="$(cat)"
@@ -39,4 +40,5 @@ BODY="$(build_payload "$INPUT" "stop" \
     --arg response "$RESPONSE" \
     --arg transcript_path "$TRANSCRIPT_PATH")"
 
+debug_log "hook=stop summary=$SUMMARY query_len=${#QUERY} response_len=${#RESPONSE}"
 "$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"

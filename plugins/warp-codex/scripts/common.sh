@@ -2,6 +2,17 @@
 
 set -euo pipefail
 
+debug_log() {
+    local logfile="${WARP_CODEX_DEBUG_LOG:-$HOME/.codex/warp-codex.log}"
+    mkdir -p "$(dirname "$logfile")"
+    printf '%s %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$*" >> "$logfile" 2>/dev/null || true
+}
+
+debug_hook_invocation() {
+    local hook_name="${1:-unknown}"
+    debug_log "hook=${hook_name} pid=$$ ppid=$PPID term_program=${TERM_PROGRAM:-} warp_proto=${WARP_CLI_AGENT_PROTOCOL_VERSION:-} pwd=$(pwd)"
+}
+
 truncate_text() {
     local value="${1:-}"
     local limit="${2:-200}"
@@ -80,4 +91,3 @@ extract_last_transcript_assistant_message() {
         | last // empty
     ' "$transcript_path" 2>/dev/null || true
 }
-

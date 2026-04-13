@@ -7,6 +7,7 @@ source "$SCRIPT_DIR/should-notify.sh"
 source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
+debug_hook_invocation "user_prompt_submit"
 should_use_plain || exit 0
 
 INPUT="$(cat)"
@@ -21,5 +22,5 @@ BODY="$(build_payload "$INPUT" "prompt_submit" \
     --arg summary "$SUMMARY" \
     --arg query "$QUERY")"
 
+debug_log "hook=user_prompt_submit summary=$SUMMARY"
 "$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
-

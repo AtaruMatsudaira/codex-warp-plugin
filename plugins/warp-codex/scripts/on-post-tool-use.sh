@@ -7,6 +7,7 @@ source "$SCRIPT_DIR/should-notify.sh"
 source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
+debug_hook_invocation "post_tool_use"
 should_use_plain || exit 0
 
 INPUT="$(cat)"
@@ -26,5 +27,5 @@ BODY="$(build_payload "$INPUT" "tool_complete" \
     --arg command "$COMMAND" \
     --arg output_preview "$OUTPUT_PREVIEW")"
 
+debug_log "hook=post_tool_use tool=$TOOL_NAME summary=$SUMMARY"
 "$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
-
