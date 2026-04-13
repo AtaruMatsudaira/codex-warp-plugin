@@ -2,7 +2,7 @@
 
 Warp-native notifications for Codex CLI on macOS.
 
-This project adapts the `warpdotdev/claude-code-warp` idea to Codex CLI using Codex's public hook system. It sends Warp OSC 777 notifications for key Codex session events and mirrors a plain notification for visibility in current Warp builds.
+This project adapts the `warpdotdev/claude-code-warp` idea to Codex CLI using Codex's public hook system. It sends Warp desktop notifications with the documented OSC 777 title/body format.
 
 Japanese documentation is available at [README.ja.md](./README.ja.md).
 
@@ -12,7 +12,6 @@ Japanese documentation is available at [README.ja.md](./README.ja.md).
 - User prompt submit notifications
 - Bash post-tool-use notifications
 - Turn completion notifications
-- macOS Notification Center fallback when Warp delivery is not available
 
 ## Current Scope
 
@@ -71,7 +70,6 @@ Runtime hook debug logs are written to:
 
 ## Notes
 
-- Structured `warp://cli-agent` payloads are still sent.
-- A plain OSC 777 notification is mirrored for user-visible delivery in current Warp behavior.
-- If Warp pane delivery is unavailable, the scripts fall back to macOS Notification Center.
-
+- Notifications use Warp's documented OSC 777 `notify;<title>;<body>` format.
+- Warp only shows desktop notifications when you are focused on another app at the time the trigger fires.
+- Warp notifications must also be enabled both in Warp settings and in macOS system notification settings.

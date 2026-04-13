@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/should-notify.sh"
-source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "post_tool_use"
@@ -21,11 +20,5 @@ if [ -n "$COMMAND" ]; then
     SUMMARY="$(truncate_text "$TOOL_NAME completed: $COMMAND" 200)"
 fi
 
-BODY="$(build_payload "$INPUT" "tool_complete" \
-    --arg summary "$SUMMARY" \
-    --arg tool_name "$TOOL_NAME" \
-    --arg command "$COMMAND" \
-    --arg output_preview "$OUTPUT_PREVIEW")"
-
 debug_log "hook=post_tool_use tool=$TOOL_NAME summary=$SUMMARY"
-"$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
+"$SCRIPT_DIR/warp-notify.sh" "Warp Codex" "$SUMMARY"

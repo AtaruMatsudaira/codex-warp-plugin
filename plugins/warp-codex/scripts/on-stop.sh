@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/should-notify.sh"
-source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "stop"
@@ -34,11 +33,5 @@ if [ -n "$RESPONSE" ]; then
     SUMMARY="$(truncate_text "Task complete: $RESPONSE" 200)"
 fi
 
-BODY="$(build_payload "$INPUT" "stop" \
-    --arg summary "$SUMMARY" \
-    --arg query "$QUERY" \
-    --arg response "$RESPONSE" \
-    --arg transcript_path "$TRANSCRIPT_PATH")"
-
 debug_log "hook=stop summary=$SUMMARY query_len=${#QUERY} response_len=${#RESPONSE}"
-"$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
+"$SCRIPT_DIR/warp-notify.sh" "Warp Codex" "$SUMMARY"

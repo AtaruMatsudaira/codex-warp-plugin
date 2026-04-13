@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/should-notify.sh"
-source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "session_start"
@@ -18,13 +17,11 @@ SUMMARY="Codex session started"
 if [ "$SOURCE" != "startup" ]; then
     SUMMARY="Codex session ${SOURCE}"
 fi
-
-BODY="$(build_payload "$INPUT" "session_start" \
-    --arg summary "$SUMMARY" \
-    --arg source "$SOURCE" \
-    --arg model "$MODEL" \
-    --arg permission_mode "$PERMISSION_MODE" \
-    --arg plugin_version "$(plugin_version)")"
+BODY="$SUMMARY"
+if [ -n "$MODEL" ]; then
+    BODY="$BODY ($MODEL)"
+fi
+BODY="$(truncate_text "$BODY" 200)"
 
 debug_log "hook=session_start summary=$SUMMARY source=$SOURCE"
-"$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
+"$SCRIPT_DIR/warp-notify.sh" "Warp Codex" "$BODY"

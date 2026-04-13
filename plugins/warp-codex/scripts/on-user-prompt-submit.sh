@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/should-notify.sh"
-source "$SCRIPT_DIR/build-payload.sh"
 source "$SCRIPT_DIR/common.sh"
 
 debug_hook_invocation "user_prompt_submit"
@@ -18,9 +17,5 @@ if [ -n "$QUERY" ]; then
     SUMMARY="$(truncate_text "Prompt submitted: $QUERY" 200)"
 fi
 
-BODY="$(build_payload "$INPUT" "prompt_submit" \
-    --arg summary "$SUMMARY" \
-    --arg query "$QUERY")"
-
 debug_log "hook=user_prompt_submit summary=$SUMMARY"
-"$SCRIPT_DIR/warp-notify.sh" "warp://cli-agent" "$BODY"
+"$SCRIPT_DIR/warp-notify.sh" "Warp Codex" "$SUMMARY"

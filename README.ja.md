@@ -2,7 +2,7 @@
 
 Codex CLI 向けの Warp ネイティブ通知プラグインです。
 
-このプロジェクトは `warpdotdev/claude-code-warp` の考え方を Codex CLI に移植し、Codex の公開 hook 機構を使って主要イベントを Warp に通知します。現状の Warp 挙動を踏まえて、構造化 payload に加えて plain 通知もミラーしています。
+このプロジェクトは `warpdotdev/claude-code-warp` の考え方を Codex CLI に移植し、Codex の公開 hook 機構を使って主要イベントを Warp に通知します。通知は Warp の公式ドキュメントにある OSC 777 の title/body 形式に合わせています。
 
 ## できること
 
@@ -10,7 +10,6 @@ Codex CLI 向けの Warp ネイティブ通知プラグインです。
 - プロンプト送信通知
 - Bash 実行後の通知
 - ターン完了通知
-- Warp に届けられない場合の macOS 通知センターフォールバック
 
 ## 対象範囲
 
@@ -67,7 +66,6 @@ hook のデバッグログは以下に出ます。
 
 ## 補足
 
-- `warp://cli-agent` 向けの structured payload は引き続き送信します
-- 現状の Warp で見える通知を優先するため、plain OSC 777 通知も同時に送ります
-- Warp 側に届かない場合は macOS 通知センターへフォールバックします
-
+- 通知は Warp の公式な OSC 777 `notify;<title>;<body>` 形式を使います
+- 通知は trigger 時に別アプリへフォーカスしているときだけ表示されます
+- Warp 側の通知設定と macOS 側の通知許可の両方が必要です
